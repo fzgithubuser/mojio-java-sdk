@@ -5,12 +5,12 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh './gradlew clean build'
-				archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+				archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
 			}
 		}
 		stage('Test') {
 			steps {
-				sh 'gradlew test'
+				sh './gradlew test'
 			}
 		}
 	}
